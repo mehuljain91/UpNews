@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <style>
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+        }
+
+        /* Fade in tabs */
+        @-webkit-keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <center>
+            <h1>Get News Headlines</h1>
+            <a href="/" class="btn btn-danger">Refresh News</a>
+            </form>
+        </center>
+    </div>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'toi')" id="defaultOpen">Times of India</button>
+        <button class="tablinks" onclick="openCity(event, 'ie')">Indian Express</button>
+        <button class="tablinks" onclick="openCity(event, 'ht')">News18</button>
+    </div>
+
+    <div id="toi" class="tabcontent">
+        <h3 class="text-centre"> News from Times of India</h3>
+        {% for n in toi_news %}
+        <h5 class="mt-3"> - {{n}} </h5>
+        <hr>
+        {% endfor %}
+        <br>
+    </div>
+
+    <div id="ie" class="tabcontent">
+        <h3 class="text-centre">News from Indian Express</h3>
+        {% for ien in ie_news %}
+        <h5 class="mt-3"> - {{ien}} </h5>
+        <hr>
+        {% endfor %}
+        <br>
+    </div>
+
+    <div id="ht" class="tabcontent">
+        <h3 class="text-centre">News from News18</h3>
+        {% for htn in ht_news %}
+        <h5 class="mt-3">- {{htn}} </h5>
+        <hr>
+        {% endfor %}
+    </div>
+
+    <!--
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="text-centre"> News from Times of india</h3>
+                {% for n in toi_news %}
+                <h5> - {{n}} </h5>
+                <hr>
+                {% endfor %}
+                <br>
+            </div>
+            <div class="col-6">
+                <h3 class="text-centre">News from The Hindu</h3>
+                {% for htn in ht_news %}
+                <h5> - {{htn}} </h5>
+                <hr>
+                {% endfor %}
+                <br>
+            </div>
+        </div>
+
+    </div>
+
+    -->
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
