@@ -1,5 +1,7 @@
 # Upnews
 
+![UpNews_Image_Screenshot](https://mehuljain91.github.io/img//upnews-img.png)
+
 Upnews is a web application built using Django that scrapes news headlines from some news websites using the BeautifulSoup Python library. The application allows users to view the latest news headlines.
 
 ## Dependencies
